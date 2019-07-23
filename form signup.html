@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Final Task</title>
+<style type="text/css">
+#message,#message1,#message2,#message3
+{
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:9px;
+	color:#F00;
+}
+.demo,.demo1
+{
+	margin-top: 10px;
+	padding: 18px;
+	height: 4px;
+	font-family: "Comic Sans MS", monospace;
+	width: 100px;
+}
+
+
+#btn
+{
+	height:30px;
+	width:70px;
+	background:#33F;
+	color:#FFF;
+	border-color:#33F;
+}
+
+  .texts
+{
+	font-size:14px bold #33F;
+} 
+fieldset{
+
+	background:#fff5ee;
+	margin: 200px;
+
+}
+
+
+body{
+	background:#B6B3F8;
+}
+</style>
+<script type="text/javascript" >
+
+
+  
+
+function username(){
+   
+   var text;
+   var x= document.getElementById("uname").value;
+  if (x.length<=3 || !isNaN(x[0]) || x.length>=1){
+
+    text="Username should start with a alphabet and should be more than 3 characters in length";  
+    document.getElementById("uname").style.background="red";	 
+  
+      document.getElementById("message").innerHTML= text;
+  }
+
+      if ((x== null || x=="")) {
+    	text="Please fill the username field";
+    	document.getElementById("uname").style.background="red";
+    
+    document.getElementById("message").innerHTML= text;
+}
+  if (x.length>3 && isNaN(x[0])) {
+	var text= document.getElementById("message");
+      text.style.display="none";
+      text.style.visibility="hidden";
+      document.getElementById("uname").style.background="blue";
+      }
+ }
+
+
+ function password(){
+   
+      var letters= /^[A-Za-z]+$/;
+      var numbers= /^[0-9]+$/;
+      var p= document.forms["myform"]["pw"].value;
+
+      if( p.length<6 || p.match(letters) || p.match(numbers)){
+
+      	var text="password should contain atleast 6 characters containg number and alphabets";
+      	document.getElementById("message1").innerHTML=text;
+      	document.getElementById("pw").style.background="red";
+      	return false;
+      }
+
+      else{
+          
+          var text= document.getElementById("message1");
+      text.style.display="none";
+      text.style.visibility="hidden";
+      document.getElementById("pw").style.background="blue";
+
+      }
+ }
+
+
+ function EMAIL(){
+
+ 	var es =/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+
+ 	var e= document.getElementById("em").value;
+ 	if( es.test(e)==false){
+
+ 		var text ="invalid email";
+ 		
+ 		document.getElementById("em").style.background="red";
+ 	   document.getElementById("message2").innerHTML= text;
+ 	  
+ 	}
+
+ 	else{
+
+ 		var text = document.getElementById("message2");
+ 		text.style.display="none";
+ 		text.style.visibility="hidden";
+ 		document.getElementById("em").style.background="blue";
+ 	}
+ }   
+
+ function AGE(){
+    
+    var a= document.getElementById("ag").value;
+
+   if (a < 10 || a>90){
+
+     	var text= "invalid age";
+     	
+     	document.getElementById("ag").style.background ="red";
+     	document.getElementById("message3").innerHTML= text;
+     }
+
+     else{
+
+     	var text = document.getElementById("message3");
+     	text.style.display="none";
+     	text.style.visibility="hidden";
+     	document.getElementById("ag").style.background="blue";
+     }
+
+
+ }
+
+
+
+
+
+   
+</script>
+</head>
+<body>
+<form id="myform">
+	<center>
+		<fieldset>
+			<center>
+				<p class="txt">LOGIN PAGE</p><br>
+				<input type="text" id="uname" placeholder="USERNAME" class="demo" onblur="username()" onfocus="focus()"/>
+				<p id="message"></p><br>
+				<input type="password" id="pw" placeholder="PASSWORD" class="demo1" onblur="password()"/>
+				<p id="message1"></p><br>
+			    <input type="email" id="em" placeholder="EMAIL" class="demo" onblur="EMAIL()"/>
+			    <p id="message2"></p><br>
+                <input type="text" id ="ag" placeholder="AGE" class="demo" onblur="AGE()"/>
+                <p id="message3"></p><br>
+                <input type="submit" class="btn" placeholder="Button" onclick="submitClick()" />
+			</center>
+        </fieldset>
+	</center>
+</form>
+</body>
+</html>
